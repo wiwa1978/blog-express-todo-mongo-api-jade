@@ -1,0 +1,24 @@
+
+extends ../layout
+
+block content
+
+  div.container
+    h2 Update Todo item: #{todo.content}
+
+    div.content
+    form#formAddTodo(name="updatetodo",method="post",action='/todos/#{todo._id}/edit',enctype='application/x-www-form-urlencoded')
+        p
+            input#content.form-control(type='content', name='content', value='#{todo.content}', placeholder='Content')
+        p
+            input#description.form-control(type='description', name='description',value='#{todo.content}', placeholder='Description')
+        p
+            .checkbox
+                label
+                    input(type='checkbox', name='completed', checked=('#{todo.completed}'==='true' ? "checked" : undefined))
+                    |  Completed
+        p
+            input(type='hidden',value='PUT',name='_method')
+        p
+            button.btn.btn-primary(type="submit") Update Todo
+

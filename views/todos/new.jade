@@ -1,0 +1,22 @@
+
+extends ../layout
+
+block content
+
+  div.container
+    h2 Add Todo item
+
+    div.content
+    form#formAddTodo(name="addtodo",method="post",action="/todos")
+        p
+            input#content.form-control(type='content', name='content', placeholder='Content')
+        p
+            input#description.form-control(type='description', name='description', placeholder='Description')
+        p
+            .checkbox
+                label
+                    input(type='checkbox', name='completed')
+                    |  Completed
+        p
+            button.btn.btn-primary(type="submit") Add Todo
+

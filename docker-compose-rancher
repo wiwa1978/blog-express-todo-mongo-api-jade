@@ -1,0 +1,9 @@
+services:
+  express-container:
+    image: wiwa1978/express-todo
+    ports:
+     - "4000:4000"
+    links:
+     - mongo-container
+  mongo-container:
+    image: mongo

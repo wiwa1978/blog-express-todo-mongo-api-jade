@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+
+  div.container
+    h2 Todo Application
+
+    div.content
+
+      table.table
+        a.btn.btn-primary( href="/todos/new" ) Add Todo
+        thead
+          tr
+            th Content
+            th Description
+            th Status
+            th Created
+            th Updated
+            th Actions
+        tbody
+          - each todo, i in todos
+            tr
+              td #{todo.content}
+              td #{todo.description}
+              #{todo.completed}
+              if todo.completed
+                td <span class="label label-success">Completed</span>
+              else
+                td <span class="label label-warning">Pending</span>
+              td #{moment(todo.created_at).format('DD/MM/YYYY -- HH:mm:ss')}
+              td #{moment(todo.updated_at).format('DD/MM/YYYY -- HH:mm:ss')}
+              td
+                a.btn.btn-success( href="/todos/#{todo._id}/edit" ) Edit
+                form(action='/todos/#{todo._id}/delete', method='post',enctype='application/x-www-form-urlencoded')
+                    input(type='hidden',value='DELETE',name='_method')
+                    button.btn.btn-danger(type='submit') Delete
+
+
