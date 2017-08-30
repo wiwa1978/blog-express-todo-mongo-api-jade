@@ -3,10 +3,10 @@ services:
   express-container:
     build: .
     ports:
-     - "4000:4000"
+     - "3000:3000"
     volumes:
      - .:/usr/src/app
     depends_on:
-     - mongo-container
-  mongo-container:
+     - mongo_container
+  mongo_container:
     image: mongo
